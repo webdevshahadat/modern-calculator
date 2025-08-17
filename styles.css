@@ -1,0 +1,96 @@
+/* styles.css */
+:root{
+  --bg: #0b1220;
+  --panel: rgba(15, 23, 42, 0.75);
+  --glass: rgba(255,255,255,0.08);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #22d3ee;
+  --accent-2: #38bdf8;
+  --shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.4;
+  background: var(--bg) url('background.jpg') center/cover no-repeat fixed;
+}
+
+.app{
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  backdrop-filter: blur(2px);
+}
+
+.calculator{
+  width: min(420px, 95vw);
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.display{
+  padding: 1.25rem 1.25rem 0;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: right;
+  min-height: 4.5rem;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+}
+
+.keys{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 1rem;
+}
+
+.key{
+  appearance: none;
+  border: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.2s ease, background 0.2s ease;
+  user-select: none;
+  outline: none;
+}
+
+.key:active{
+  transform: translateY(1px) scale(0.99);
+  filter: brightness(0.95);
+}
+
+.key:hover{ filter: brightness(1.05); }
+
+.key.op{ background: linear-gradient(180deg, rgba(34,211,238,0.25), rgba(56,189,248,0.2)); }
+.key.eq{ background: linear-gradient(180deg, rgba(34,211,238,0.5), rgba(56,189,248,0.4)); }
+.key.fn{ color: var(--muted); }
+
+.key.wide{ grid-column: span 2; }
+
+.tips{
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
